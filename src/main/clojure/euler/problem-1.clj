@@ -4,5 +4,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (ns euler.problem-1)
-(println (apply + (filter #(or (zero? (rem % 3)) (zero? (rem % 5)))
-  (range 1000))))
+(println (time (reduce +
+    (filter #(or (zero? (rem % 3)) (zero? (rem % 5)))
+        (range 1000)))))
+
+;"Elapsed time: 17.663241 msecs"
+;233168
