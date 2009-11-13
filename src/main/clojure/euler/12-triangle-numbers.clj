@@ -10,11 +10,14 @@
         (* 2 (count (filter zero? (map mod (repeat sn n) (range 1 (inc sn))))))))
 
 (defn get-tri-n-with-div [min-div]
-    (loop [i 1 tri-n 1]
-        (let [count (count-divisors tri-n)]
-            (if (>= count min-div) tri-n (recur (inc i) (+ tri-n i 1))))))
+    (first (filter #(>= (count-divisors %) min-div) (triangle-numbers))))
 
 (println (time (get-tri-n-with-div 500)))
 
 ;"Elapsed time: 155144.994329 msecs"
 ;76576500
+
+;"Elapsed time: 169227.045338 msecs"
+;76576500
+
+;(println (count-divisors 62370000))
