@@ -15,3 +15,5 @@
 
 ;"Elapsed time: 50.08158 msecs"
 ;137846528820
+
+; Another solution 40!/(20!20!)
