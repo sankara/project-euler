@@ -24,5 +24,5 @@
 (println (time (let [n 1000000 start 800000]
     (find-longest-hailstone-seed start n))))
 
-;"Elapsed time: 16885.005049 msecs"
+;"Elapsed time: 4214.234317 msecs"
 ;837799
