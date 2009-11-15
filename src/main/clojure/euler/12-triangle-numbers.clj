@@ -20,4 +20,7 @@
 ;"Elapsed time: 169227.045338 msecs"
 ;76576500
 
+;"Elapsed time: 84315.608594 msecs"
+;76576500
+
 ;(println (count-divisors 62370000))
