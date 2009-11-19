@@ -4,8 +4,8 @@
 ; Not being used. Just to try it out.
 (defn hailstone-seq [seed]
     (lazy-seq (cons seed
-        (if (= seed 1) '() (hailstone-seq
-            (if (even? seed) (int (/ seed 2)) (+ (* 3 seed) 1)))))))
+        (if (= seed 1) '()
+            (hailstone-seq (if (even? seed) (int (/ seed 2)) (+ (* 3 seed) 1)))))))
 
 (defn find-length [seed]
     (loop [n seed count 0]
