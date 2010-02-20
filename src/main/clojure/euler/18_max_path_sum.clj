@@ -1,26 +1,20 @@
 (ns euler.18-max-path-sum)
 
-(def max-path-cache (ref '{}))
-
-(defn cache-result [co-ord result]
-    (do (dosync (alter max-path-cache conj {co-ord result}))) result)
-
 (defn max-path-sum
     ([triangle]
-        (do (dosync (ref-set max-path-cache '{}))
-            (max-path-sum triangle [0 0])))
-
+        (max-path-sum triangle [0 0]))
     ([triangle [rootx rooty]]
-        (if (contains? @max-path-cache [rootx rooty]) (get @max-path-cache [rootx rooty])
-            (cache-result [rootx rooty] (let [curr (nth (nth triangle rootx) rooty)]
-                (if (>= (inc rootx) (count triangle)) curr
-                    (let [
-                        next-x (inc rootx)
-                        next-y (inc rooty)
-                        next-len (count (nth triangle next-x))
-                        left-max (if (>= rooty 0) (max-path-sum triangle [next-x rooty]))
-                        right-max (if (< rooty next-len) (max-path-sum triangle [next-x next-y]))]
-                        (+ curr (max left-max right-max)))))))))
+        (let [curr (nth (nth triangle rootx) rooty)]
+            (if (>= (inc rootx) (count triangle)) curr
+                (let [
+                    next-x (inc rootx)
+                    next-y (inc rooty)
+                    next-len (count (nth triangle next-x))
+                    left-max (if (>= rooty 0) (max-path-sum triangle [next-x rooty]))
+                    right-max (if (< rooty next-len) (max-path-sum triangle [next-x next-y]))]
+                    (+ curr (max left-max right-max))))))
+    )
+(def max-path-sum (memoize max-path-sum))
 
 (def triangle [[75]
                [95 64]
@@ -41,4 +35,8 @@
 (println (time (max-path-sum triangle)))
 
 ;"Elapsed time: 21.970655 msecs"
+;1074
+
+;After memoization
+;"Elapsed time: 6.942705 msecs"
 ;1074
