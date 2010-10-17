@@ -1,6 +1,5 @@
-*.iml
-*.iwl
-*.ipr
-*#
+pom.xml
+*jar
+lib
+classes
 *~
-
