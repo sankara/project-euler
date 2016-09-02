@@ -4,9 +4,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (ns euler.problem-1)
-(println (time (reduce +
+(doseq [ln (line-seq (java.io.BufferedReader. *in*))]
+  (println (reduce +
     (filter #(or (zero? (rem % 3)) (zero? (rem % 5)))
-        (range 1000)))))
+        (range ln)))))
 
 ;"Elapsed time: 17.663241 msecs"
 ;233168
