@@ -4,10 +4,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (ns euler.problem-1)
-(doseq [ln (line-seq (java.io.BufferedReader. *in*))]
-  (println (reduce +
-    (filter #(or (zero? (rem % 3)) (zero? (rem % 5)))
-        (range ln)))))
+(let [n (Integer/parseInt (read-line))]
+  (dotimes [_ n]
+    (println (reduce +
+      (filter #(or (zero? (rem % 3)) (zero? (rem % 5)))
+        (range (Integer/parseInt (read-line))))))))
 
 ;"Elapsed time: 17.663241 msecs"
 ;233168

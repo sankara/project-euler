@@ -6,3 +6,5 @@ classes
 target/
 .lein-repl-history
 .nrepl-port
+*.iml
+.idea/
